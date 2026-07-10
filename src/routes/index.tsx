@@ -3,7 +3,8 @@ import { useState } from "react";
 import logo from "@/assets/logo.png.asset.json";
 import heroOffice from "@/assets/hero-office.jpg";
 import scaleImg from "@/assets/scale.jpg";
-import lawyersImg from "@/assets/lawyers.jpg";
+import luanImg from "@/assets/luan.jpg.asset.json";
+import greicyImg from "@/assets/greicy.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -43,28 +44,36 @@ function Landing() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Decorative ambient blobs — global depth */}
+      <div aria-hidden className="pointer-events-none fixed inset-0 -z-20 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-navy-soft/15 blur-[140px]" />
+        <div className="absolute top-1/3 -right-40 h-[560px] w-[560px] rounded-full bg-primary/10 blur-[160px]" />
+        <div className="absolute bottom-0 left-1/3 h-[420px] w-[420px] rounded-full bg-steel/20 blur-[140px]" />
+      </div>
+
       {/* NAV */}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur">
+      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-3">
             <img src={logo.url} alt="Castro & Henrich Advocacia" className="h-11 w-auto" />
           </a>
           <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-            <a href="#areas" className="hover:text-primary">Áreas</a>
-            <a href="#extrajudicial" className="hover:text-primary">Extrajudicial</a>
-            <a href="#equipe" className="hover:text-primary">Advogados</a>
-            <a href="#contato" className="hover:text-primary">Contato</a>
+            <a href="#areas" className="transition hover:text-primary">Áreas</a>
+            <a href="#extrajudicial" className="transition hover:text-primary">Extrajudicial</a>
+            <a href="#atendimento" className="transition hover:text-primary">Atendimento</a>
+            <a href="#equipe" className="transition hover:text-primary">Advogados</a>
+            <a href="#contato" className="transition hover:text-primary">Contato</a>
           </nav>
           <button
             onClick={directWhats}
-            className="hidden items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:opacity-90 md:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-metal px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-soft transition hover:shadow-elegant md:inline-flex"
           >
             <WhatsIcon className="h-4 w-4" /> Falar agora
           </button>
         </div>
       </header>
 
-      {/* HERO with background image */}
+      {/* HERO */}
       <section id="top" className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img
@@ -76,17 +85,26 @@ function Landing() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-background/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+          {/* fine grid overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage:
+                "linear-gradient(var(--navy) 1px, transparent 1px), linear-gradient(90deg, var(--navy) 1px, transparent 1px)",
+              backgroundSize: "56px 56px",
+            }}
+          />
         </div>
 
         <div className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 pt-16 md:grid-cols-[1.2fr_1fr] md:gap-16 md:pt-28 md:pb-32">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-3 py-1 text-xs font-medium uppercase tracking-wider text-navy-soft backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-white/70 px-3 py-1 text-xs font-medium uppercase tracking-wider text-navy-soft shadow-soft backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
               Direito de família · Novo Hamburgo/RS
             </span>
             <h1 className="mt-6 text-4xl leading-[1.05] text-foreground md:text-5xl lg:text-[3.75rem]">
               Divórcio, inventário e testamento com{" "}
-              <span className="italic text-primary">clareza e agilidade</span>.
+              <span className="italic text-metal">clareza e agilidade</span>.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
               Quando possível, resolvemos seu caso em{" "}
@@ -96,27 +114,33 @@ function Landing() {
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#contato"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-elegant transition hover:opacity-90"
+                className="group inline-flex items-center gap-2 rounded-full bg-metal px-6 py-3 text-sm font-medium text-primary-foreground shadow-elegant transition hover:shadow-glow"
               >
                 Falar com um advogado
-                <span aria-hidden>→</span>
+                <span aria-hidden className="transition group-hover:translate-x-0.5">→</span>
               </a>
               <button
                 onClick={directWhats}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 text-sm font-medium text-foreground transition hover:border-primary hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-6 py-3 text-sm font-medium text-foreground backdrop-blur transition hover:border-primary hover:text-primary"
               >
                 <WhatsIcon className="h-4 w-4" /> WhatsApp direto
               </button>
             </div>
             <dl className="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
-              <Stat k="15+" v="anos de atuação" />
-              <Stat k="7 dias" v="média para extrajudicial*" />
+              <Stat k="5+" v="anos de atuação" />
+              <Stat k="7 dias" v="média extrajudicial*" />
               <Stat k="100%" v="atendimento humanizado" />
             </dl>
           </div>
 
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl border border-border bg-white p-8 shadow-elegant">
+            <div className="absolute -inset-3 -z-10 rounded-3xl bg-metal opacity-20 blur-2xl" />
+            <div className="relative overflow-hidden rounded-2xl border border-border bg-white/90 p-8 shadow-elegant backdrop-blur">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{ backgroundImage: "var(--gradient-shine)", mixBlendMode: "overlay" }}
+              />
               <img
                 src={logo.url}
                 alt=""
@@ -136,7 +160,7 @@ function Landing() {
                   para a família.”
                 </blockquote>
                 <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-                  <Check>Análise inicial gratuita do seu caso</Check>
+                  <Check>Análise inicial do seu caso sem compromisso</Check>
                   <Check>Honorários combinados por escrito, sem surpresas</Check>
                   <Check>Atendimento presencial e online em todo o RS</Check>
                 </ul>
@@ -146,19 +170,24 @@ function Landing() {
         </div>
       </section>
 
-      {/* LOGO BAND — brand emphasis */}
-      <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
+      {/* LOGO BAND */}
+      <section className="relative isolate overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-metal" />
         <img
           src={scaleImg}
           alt=""
           aria-hidden
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20"
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-15 mix-blend-luminosity"
           width={1200}
           height={1400}
           loading="lazy"
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary via-primary/95 to-primary/70" />
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center md:py-20">
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)" }}
+        />
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center text-primary-foreground md:py-20">
           <img
             src={logo.url}
             alt="Castro & Henrich Advocacia"
@@ -174,14 +203,15 @@ function Landing() {
       </section>
 
       {/* ÁREAS */}
-      <section id="areas" className="border-b border-border bg-secondary/40">
+      <section id="areas" className="relative border-b border-border">
+        <div className="absolute inset-0 -z-10 bg-metal-soft opacity-60" />
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-widest text-navy-soft">Áreas de atuação</p>
             <h2 className="mt-3 text-3xl md:text-4xl">Especialistas em Direito de Família</h2>
             <p className="mt-4 text-muted-foreground">
-              Cada caso pede a solução certa. Avaliamos a sua situação e indicamos o caminho mais eficiente,
-              seja em cartório ou em juízo.
+              Cada caso pede a solução certa. Avaliamos a sua situação e indicamos o caminho mais
+              eficiente, seja em cartório ou em juízo.
             </p>
           </div>
 
@@ -207,13 +237,13 @@ function Landing() {
         </div>
       </section>
 
-      {/* EXTRAJUDICIAL FOCUS */}
-      <section id="extrajudicial" className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+      {/* EXTRAJUDICIAL FOCUS + COMPARATIVO */}
+      <section id="extrajudicial" className="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
+        <div className="grid gap-12 md:grid-cols-2 md:items-start">
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-navy-soft">Nosso diferencial</p>
             <h2 className="mt-3 text-3xl md:text-4xl">
-              Por que a via <span className="italic text-primary">extrajudicial</span> pode ser a melhor escolha?
+              Por que a via <span className="italic text-metal">extrajudicial</span> pode ser a melhor escolha?
             </h2>
             <p className="mt-5 text-muted-foreground">
               Desde 2007, divórcios e inventários consensuais podem ser feitos diretamente em cartório.
@@ -228,26 +258,38 @@ function Landing() {
           </div>
 
           <div className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-br from-secondary to-transparent" />
+            <div className="absolute -inset-6 -z-10 rounded-3xl bg-gradient-to-br from-navy-soft/20 via-transparent to-primary/10 blur-2xl" />
             <div className="overflow-hidden rounded-2xl border border-border shadow-elegant">
               <img
                 src={scaleImg}
                 alt="Balança da justiça"
-                className="h-72 w-full object-cover md:h-96"
+                className="h-64 w-full object-cover md:h-72"
                 loading="lazy"
                 width={1200}
                 height={1400}
               />
             </div>
-            <div className="mt-6 rounded-2xl border border-border bg-white p-6 shadow-soft">
-              <p className="font-serif text-sm uppercase tracking-widest text-navy-soft">Comparativo</p>
-              <div className="mt-4 grid gap-3 text-sm">
-                <Compare label="Prazo médio" a="7 a 30 dias" b="1 a 3 anos" />
-                <Compare label="Audiência" a="Não" b="Sim" />
-                <Compare label="Privacidade" a="Alta" b="Autos públicos" />
-                <Compare label="Recursos" a="Não cabem" b="Cabem múltiplos" />
+
+            {/* Comparative table */}
+            <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-white/90 shadow-soft backdrop-blur">
+              <div className="border-b border-border/60 px-6 pt-5 pb-4">
+                <p className="font-serif text-xs uppercase tracking-widest text-navy-soft">Comparativo</p>
+                <p className="mt-1 text-sm text-muted-foreground">Extrajudicial vs. Judicial</p>
               </div>
-              <p className="mt-4 text-xs text-muted-foreground">
+              <div className="grid grid-cols-[1.1fr_1fr_1fr] items-center gap-3 border-b border-border bg-metal-soft px-6 py-3 text-[11px] font-semibold uppercase tracking-wider">
+                <span className="text-navy-soft">Critério</span>
+                <span className="text-center text-primary">Extrajudicial</span>
+                <span className="text-center text-muted-foreground">Judicial</span>
+              </div>
+              <div className="divide-y divide-border">
+                <CompareRow label="Prazo médio" a="7 a 30 dias" b="1 a 3 anos" highlight />
+                <CompareRow label="Local" a="Cartório" b="Fórum" />
+                <CompareRow label="Audiência" a="Não" b="Sim" />
+                <CompareRow label="Privacidade" a="Alta" b="Autos públicos" />
+                <CompareRow label="Recursos" a="Não cabem" b="Cabem múltiplos" />
+                <CompareRow label="Desgaste emocional" a="Baixo" b="Elevado" />
+              </div>
+              <p className="border-t border-border/60 px-6 py-3 text-xs text-muted-foreground">
                 *Prazos estimados. Cada caso é avaliado individualmente pelo escritório.
               </p>
             </div>
@@ -255,66 +297,117 @@ function Landing() {
         </div>
       </section>
 
-      {/* EQUIPE */}
-      <section id="equipe" className="relative border-y border-border bg-secondary/50">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1fr_1.1fr] md:items-center md:py-28">
-          <div className="relative">
-            <div className="absolute -inset-4 -z-10 rounded-3xl bg-primary/10 blur-2xl" />
-            <div className="overflow-hidden rounded-2xl border border-border shadow-elegant">
-              <img
-                src={lawyersImg}
-                alt="Luan Castro e Greicy Maura Henrich"
-                className="h-full w-full object-cover"
-                loading="lazy"
-                width={1408}
-                height={1600}
-              />
-            </div>
-          </div>
-
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-navy-soft">Quem cuida do seu caso</p>
-            <h2 className="mt-3 text-3xl md:text-4xl">Advogados com nome, rosto e responsabilidade</h2>
-            <p className="mt-5 text-muted-foreground">
-              Você não fala com um call center. Do primeiro contato à assinatura da escritura, seu
-              caso é acompanhado pessoalmente pelos sócios do escritório.
+      {/* FUNIL DE ATENDIMENTO */}
+      <section id="atendimento" className="relative overflow-hidden border-y border-border">
+        <div className="absolute inset-0 -z-10 bg-metal-soft opacity-70" />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 h-px hairline"
+        />
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-24">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-navy-soft">Como atendemos</p>
+            <h2 className="mt-3 text-3xl md:text-4xl">
+              Do primeiro contato à <span className="italic text-metal">solução do seu caso</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Um fluxo claro, transparente e sem burocracia — pensado para você entender exatamente
+              o que vai acontecer em cada etapa.
             </p>
-
-            <div className="mt-8 space-y-5">
-              <Lawyer
-                name="Luan Castro"
-                oab="OAB/RS 124.511"
-                bio="Sócio-fundador. Atua com foco em soluções extrajudiciais e em processos de família complexos."
-              />
-              <Lawyer
-                name="Greicy Maura Henrich"
-                oab="OAB/RS 124.744"
-                bio="Sócia-fundadora. Especialista em direito sucessório, inventários e planejamento patrimonial."
-              />
-            </div>
-
-            <div className="mt-8 flex items-center gap-4 rounded-xl border border-border bg-white/70 p-4 backdrop-blur">
-              <img src={logo.url} alt="" className="h-10 w-auto" />
-              <p className="text-sm text-muted-foreground">
-                <strong className="text-foreground">Castro &amp; Henrich Advogados Associados</strong>
-                <br />
-                Novo Hamburgo — Rio Grande do Sul
-              </p>
-            </div>
           </div>
+
+          {/* Horizontal timeline */}
+          <ol className="relative mt-14 grid gap-6 md:grid-cols-4">
+            <div
+              aria-hidden
+              className="absolute left-6 right-6 top-6 hidden h-px md:block"
+              style={{
+                background:
+                  "linear-gradient(90deg, transparent, color-mix(in oklab, var(--navy-soft) 45%, transparent), color-mix(in oklab, var(--navy-soft) 45%, transparent), transparent)",
+              }}
+            />
+            <FunnelStep n="01" t="Contato inicial" d="Você fala com o escritório pelo WhatsApp ou formulário para esclarecer dúvidas iniciais." icon={<IconChat />} />
+            <FunnelStep n="02" t="Análise do caso" d="Reunião por chamada de vídeo ou telefone para entender a fundo a sua situação." icon={<IconVideo />} />
+            <FunnelStep n="03" t="Honorários e contrato" d="Apresentamos o plano e os honorários por escrito. Contrato assinado antes de iniciar." icon={<IconDoc />} />
+            <FunnelStep n="04" t="Início dos serviços" d="Começamos imediatamente a atuar no seu caso e mantemos você informado em cada etapa." icon={<IconRocket />} />
+          </ol>
         </div>
       </section>
 
-      {/* PROCESSO */}
-      <section id="processo" className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Como funciona</p>
-          <h2 className="mt-3 text-3xl md:text-4xl">Três passos até a solução</h2>
-          <div className="mt-12 grid gap-8 md:grid-cols-3">
-            <Step n="01" t="Conversa inicial" d="Você nos conta o caso pelo WhatsApp ou formulário. Avaliamos sem compromisso." />
-            <Step n="02" t="Plano e honorários" d="Definimos a estratégia (extrajudicial ou judicial) e apresentamos honorários por escrito." />
-            <Step n="03" t="Resolução" d="Cuidamos da documentação, cartório ou processo, e mantemos você informado em cada etapa." />
-          </div>
+      {/* EQUIPE — Luan */}
+      <section id="equipe" className="relative overflow-hidden border-b border-border bg-primary text-primary-foreground">
+        <img
+          src={luanImg.url}
+          alt=""
+          aria-hidden
+          className="absolute inset-y-0 right-0 -z-10 h-full w-full object-cover object-[70%_center] opacity-40 md:w-3/5"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary via-primary/95 to-primary/20" />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 opacity-[0.08]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+
+        <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Sócio-fundador</p>
+          <h2 className="mt-3 max-w-xl font-serif text-4xl leading-tight md:text-5xl">Luan Castro</h2>
+          <p className="mt-2 text-sm font-medium uppercase tracking-widest text-primary-foreground/70">
+            OAB/RS 124.511
+          </p>
+          <p className="mt-6 max-w-xl text-primary-foreground/85 md:text-lg">
+            Advogado com atuação centrada em soluções extrajudiciais e em processos de família
+            complexos. Conduz cada caso com estratégia jurídica sólida, discrição e proximidade com
+            o cliente.
+          </p>
+          <ul className="mt-8 grid max-w-xl gap-2 text-sm text-primary-foreground/85">
+            <BulletLight>Direito de família e sucessões</BulletLight>
+            <BulletLight>Divórcios consensuais e litigiosos</BulletLight>
+            <BulletLight>Negociação e mediação de conflitos familiares</BulletLight>
+          </ul>
+        </div>
+      </section>
+
+      {/* EQUIPE — Greicy */}
+      <section className="relative overflow-hidden border-b border-border bg-background">
+        <img
+          src={greicyImg.url}
+          alt=""
+          aria-hidden
+          className="absolute inset-y-0 left-0 -z-10 h-full w-full object-cover object-[30%_center] opacity-25 md:w-3/5"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-l from-background via-background/95 to-background/30" />
+        <div
+          aria-hidden
+          className="absolute inset-y-0 left-0 -z-10 w-1/2 opacity-40"
+          style={{
+            background:
+              "radial-gradient(circle at 20% 50%, color-mix(in oklab, var(--navy-soft) 25%, transparent), transparent 60%)",
+          }}
+        />
+
+        <div className="mx-auto flex max-w-6xl flex-col items-end px-6 py-20 text-right md:py-28">
+          <p className="text-xs font-semibold uppercase tracking-widest text-navy-soft">Sócia-fundadora</p>
+          <h2 className="mt-3 max-w-xl font-serif text-4xl leading-tight md:text-5xl">Greicy Maura Henrich</h2>
+          <p className="mt-2 text-sm font-medium uppercase tracking-widest text-primary">
+            OAB/RS 124.784
+          </p>
+          <p className="mt-6 max-w-xl text-muted-foreground md:text-lg">
+            Especialista em direito sucessório, inventários e planejamento patrimonial. Combina
+            técnica jurídica apurada com um atendimento humano e cuidadoso em momentos delicados
+            para a família.
+          </p>
+          <ul className="mt-8 grid max-w-xl gap-2 text-sm text-muted-foreground">
+            <BulletDark>Inventários extrajudiciais e judiciais</BulletDark>
+            <BulletDark>Testamentos e planejamento sucessório</BulletDark>
+            <BulletDark>Partilha de bens e ITCMD</BulletDark>
+          </ul>
         </div>
       </section>
 
@@ -324,12 +417,20 @@ function Landing() {
           src={heroOffice}
           alt=""
           aria-hidden
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-30"
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-25"
           loading="lazy"
           width={1600}
           height={1200}
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background via-background/95 to-background" />
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-0 -z-10 h-1/2 opacity-40"
+          style={{
+            background:
+              "radial-gradient(ellipse at 70% 0%, color-mix(in oklab, var(--navy-soft) 30%, transparent), transparent 60%)",
+          }}
+        />
 
         <div className="mx-auto grid max-w-6xl gap-14 px-6 py-20 md:grid-cols-[1fr_1.1fr] md:py-28">
           <div>
@@ -341,13 +442,42 @@ function Landing() {
               comercial.
             </p>
 
-            <div className="mt-8 rounded-xl border border-border bg-white/80 p-5 text-sm backdrop-blur">
-              <p className="font-medium text-foreground">Sobre os honorários</p>
-              <p className="mt-1 text-muted-foreground">
-                A primeira conversa é <strong className="text-foreground">gratuita e sem compromisso</strong>.
-                Os serviços jurídicos são particulares, com valores combinados por escrito antes de qualquer
-                contratação — sem surpresas.
-              </p>
+            {/* Transparência sobre honorários */}
+            <div className="mt-8 rounded-2xl border border-border bg-white/85 p-6 text-sm shadow-soft backdrop-blur">
+              <div className="flex items-start gap-3">
+                <span className="mt-0.5 grid h-8 w-8 flex-none place-items-center rounded-full bg-metal text-primary-foreground">
+                  <IconShield className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="font-serif text-base text-foreground">Transparência sobre honorários</p>
+                  <p className="mt-2 text-muted-foreground">
+                    Todos os nossos serviços são <strong className="text-foreground">particulares e remunerados</strong>.
+                    Os honorários são <strong className="text-foreground">ajustados previamente</strong>, por escrito,
+                    e o pagamento é feito <strong className="text-foreground">antecipadamente ou de forma parcelada</strong>,
+                    conforme o caso. Não trabalhamos com cobrança apenas ao final do processo.
+                  </p>
+                  <p className="mt-3 text-muted-foreground">
+                    Nossa intenção é ser transparente desde a primeira conversa — para que você
+                    contrate com clareza e tranquilidade.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-xl border border-border/70 bg-metal-soft/60 p-4 text-xs text-muted-foreground">
+                <p>
+                  <strong className="text-foreground">Não tem condições de contratar advogado particular?</strong>{" "}
+                  Recomendamos procurar a{" "}
+                  <a
+                    href="https://www.defensoria.rs.def.br/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary underline-offset-4 hover:underline"
+                  >
+                    Defensoria Pública do Estado do RS
+                  </a>
+                  , que presta excelente assistência jurídica gratuita a quem preenche os requisitos legais.
+                </p>
+              </div>
             </div>
 
             <div className="mt-8 space-y-2 text-sm text-muted-foreground">
@@ -359,8 +489,16 @@ function Landing() {
 
           <form
             onSubmit={handleSubmit}
-            className="relative overflow-hidden rounded-2xl border border-border bg-white p-8 shadow-elegant"
+            className="relative overflow-hidden rounded-2xl border border-border bg-white/95 p-8 shadow-elegant backdrop-blur"
           >
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-px -z-10 rounded-2xl opacity-60"
+              style={{
+                background:
+                  "linear-gradient(140deg, color-mix(in oklab, var(--navy-soft) 40%, transparent), transparent 40%)",
+              }}
+            />
             <img
               src={logo.url}
               alt=""
@@ -372,6 +510,7 @@ function Landing() {
                 <input
                   id="nome"
                   required
+                  maxLength={100}
                   value={nome}
                   onChange={(e) => setNome(e.target.value)}
                   placeholder="Como devemos te chamar?"
@@ -398,6 +537,7 @@ function Landing() {
                 <textarea
                   id="msg"
                   rows={4}
+                  maxLength={1000}
                   value={mensagem}
                   onChange={(e) => setMensagem(e.target.value)}
                   placeholder="Se quiser, adicione algum detalhe importante do seu caso."
@@ -407,13 +547,14 @@ function Landing() {
 
               <button
                 type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:opacity-90"
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-metal px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-elegant transition hover:shadow-glow"
               >
                 <WhatsIcon className="h-4 w-4" />
                 Conversar pelo WhatsApp
               </button>
               <p className="text-center text-xs text-muted-foreground">
                 Ao enviar, você será redirecionado para o WhatsApp do escritório.
+                Serviços remunerados — honorários combinados antes da contratação.
               </p>
             </div>
           </form>
@@ -421,7 +562,8 @@ function Landing() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border bg-primary text-primary-foreground">
+      <footer className="relative border-t border-border text-primary-foreground">
+        <div className="absolute inset-0 -z-10 bg-metal" />
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-3">
           <div>
             <img src={logo.url} alt="Castro & Henrich" className="h-12 w-auto brightness-0 invert" />
@@ -432,7 +574,7 @@ function Landing() {
           <div className="text-sm text-primary-foreground/80">
             <p className="mb-2 text-xs uppercase tracking-widest text-primary-foreground/50">Advogados</p>
             <p>Luan Castro — OAB/RS 124.511</p>
-            <p>Greicy Maura Henrich — OAB/RS 124.744</p>
+            <p>Greicy Maura Henrich — OAB/RS 124.784</p>
           </div>
           <div className="text-sm text-primary-foreground/80">
             <p className="mb-2 text-xs uppercase tracking-widest text-primary-foreground/50">Contato</p>
@@ -454,7 +596,7 @@ function Landing() {
       <button
         onClick={directWhats}
         aria-label="Falar no WhatsApp"
-        className="fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-primary text-primary-foreground shadow-elegant transition hover:scale-105"
+        className="fixed bottom-6 right-6 z-50 grid h-14 w-14 place-items-center rounded-full bg-metal text-primary-foreground shadow-elegant transition hover:scale-105 hover:shadow-glow"
       >
         <WhatsIcon className="h-6 w-6" />
       </button>
@@ -465,7 +607,7 @@ function Landing() {
 function Stat({ k, v }: { k: string; v: string }) {
   return (
     <div>
-      <dt className="font-serif text-2xl text-primary md:text-3xl">{k}</dt>
+      <dt className="font-serif text-2xl text-metal md:text-3xl">{k}</dt>
       <dd className="mt-1 text-xs uppercase tracking-wider text-muted-foreground">{v}</dd>
     </div>
   );
@@ -482,11 +624,37 @@ function Check({ children }: { children: React.ReactNode }) {
   );
 }
 
+function BulletLight({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start gap-2">
+      <span className="mt-2 h-1 w-4 flex-none rounded-full bg-primary-foreground/70" />
+      <span>{children}</span>
+    </li>
+  );
+}
+
+function BulletDark({ children }: { children: React.ReactNode }) {
+  return (
+    <li className="flex items-start justify-end gap-2">
+      <span>{children}</span>
+      <span className="mt-2 h-1 w-4 flex-none rounded-full bg-primary" />
+    </li>
+  );
+}
+
 function AreaCard({ title, desc, tag }: { title: string; desc: string; tag?: string }) {
   return (
-    <div className="group relative rounded-xl border border-border bg-white p-6 transition hover:border-primary/40 hover:shadow-soft">
+    <div className="group relative overflow-hidden rounded-xl border border-border bg-white/90 p-6 shadow-soft backdrop-blur transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition group-hover:opacity-100"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, color-mix(in oklab, var(--navy-soft) 60%, transparent), transparent)",
+        }}
+      />
       {tag && (
-        <span className="absolute -top-2 right-4 rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground">
+        <span className="absolute -top-2 right-4 rounded-full bg-metal px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground shadow-soft">
           {tag}
         </span>
       )}
@@ -499,7 +667,7 @@ function AreaCard({ title, desc, tag }: { title: string; desc: string; tag?: str
 function Benefit({ t, d }: { t: string; d: string }) {
   return (
     <div className="flex gap-4">
-      <div className="mt-1 h-6 w-1 flex-none rounded-full bg-primary" />
+      <div className="mt-1 h-6 w-1 flex-none rounded-full bg-metal" />
       <div>
         <p className="font-serif text-lg text-foreground">{t}</p>
         <p className="text-sm text-muted-foreground">{d}</p>
@@ -508,35 +676,52 @@ function Benefit({ t, d }: { t: string; d: string }) {
   );
 }
 
-function Compare({ label, a, b }: { label: string; a: string; b: string }) {
+function CompareRow({
+  label,
+  a,
+  b,
+  highlight,
+}: {
+  label: string;
+  a: string;
+  b: string;
+  highlight?: boolean;
+}) {
   return (
-    <div className="grid grid-cols-[1fr_auto_auto] items-center gap-3 border-b border-border pb-3 last:border-none last:pb-0">
+    <div
+      className={`grid grid-cols-[1.1fr_1fr_1fr] items-center gap-3 px-6 py-3 text-sm ${
+        highlight ? "bg-primary/[0.04]" : ""
+      }`}
+    >
       <span className="text-muted-foreground">{label}</span>
-      <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">{a}</span>
-      <span className="rounded-full bg-muted px-3 py-1 text-xs text-muted-foreground">{b}</span>
+      <span className="text-center font-medium text-primary">{a}</span>
+      <span className="text-center text-muted-foreground">{b}</span>
     </div>
   );
 }
 
-function Step({ n, t, d }: { n: string; t: string; d: string }) {
+function FunnelStep({
+  n,
+  t,
+  d,
+  icon,
+}: {
+  n: string;
+  t: string;
+  d: string;
+  icon: React.ReactNode;
+}) {
   return (
-    <div>
-      <p className="font-serif text-4xl text-primary-foreground/40">{n}</p>
-      <p className="mt-3 font-serif text-xl">{t}</p>
-      <p className="mt-2 text-sm text-primary-foreground/70">{d}</p>
-    </div>
-  );
-}
-
-function Lawyer({ name, oab, bio }: { name: string; oab: string; bio: string }) {
-  return (
-    <div className="rounded-xl border border-border bg-white p-5">
-      <div className="flex items-baseline justify-between gap-4">
-        <p className="font-serif text-xl text-foreground">{name}</p>
-        <p className="text-xs font-medium uppercase tracking-widest text-primary">{oab}</p>
+    <li className="relative rounded-2xl border border-border bg-white/85 p-6 shadow-soft backdrop-blur transition hover:-translate-y-1 hover:shadow-elegant">
+      <div className="flex items-center gap-3">
+        <span className="grid h-12 w-12 place-items-center rounded-full bg-metal text-primary-foreground shadow-soft">
+          {icon}
+        </span>
+        <span className="font-serif text-sm uppercase tracking-widest text-navy-soft">{n}</span>
       </div>
-      <p className="mt-2 text-sm text-muted-foreground">{bio}</p>
-    </div>
+      <p className="mt-4 font-serif text-lg text-foreground">{t}</p>
+      <p className="mt-2 text-sm text-muted-foreground">{d}</p>
+    </li>
   );
 }
 
@@ -563,6 +748,53 @@ function WhatsIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5s-.7-1.7-.9-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.1-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4 15 3.5 13.5 3.5 12 3.5 7.3 7.3 3.5 12 3.5S20.5 7.3 20.5 12 16.7 20.2 12 20.2z" />
+    </svg>
+  );
+}
+
+function IconShield({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
+
+function IconChat() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+  );
+}
+
+function IconVideo() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <rect x="2" y="6" width="14" height="12" rx="2" />
+      <path d="m22 8-6 4 6 4z" />
+    </svg>
+  );
+}
+
+function IconDoc() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+      <path d="M14 2v6h6" />
+      <path d="M9 14h6M9 18h4" />
+    </svg>
+  );
+}
+
+function IconRocket() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+      <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
     </svg>
   );
 }
