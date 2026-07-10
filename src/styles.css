@@ -35,12 +35,20 @@
   --color-ring: var(--ring);
   --color-navy: var(--navy);
   --color-navy-soft: var(--navy-soft);
+  --color-navy-deep: var(--navy-deep);
+  --color-steel: var(--steel);
   --color-gold: var(--gold);
   --font-serif: "Libre Baskerville", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
-  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, var(--navy) 25%, transparent);
-  --shadow-soft: 0 4px 20px -8px color-mix(in oklab, var(--navy) 15%, transparent);
+  --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--navy-deep) 45%, transparent);
+  --shadow-soft: 0 8px 30px -10px color-mix(in oklab, var(--navy) 20%, transparent);
+  --shadow-glow: 0 0 60px -10px color-mix(in oklab, var(--navy-soft) 40%, transparent);
+  --gradient-metal: linear-gradient(135deg, oklch(0.22 0.05 250) 0%, oklch(0.34 0.08 245) 45%, oklch(0.52 0.10 240) 100%);
+  --gradient-metal-soft: linear-gradient(135deg, oklch(0.97 0.01 240) 0%, oklch(0.93 0.02 240) 55%, oklch(0.88 0.03 235) 100%);
+  --gradient-hero: linear-gradient(180deg, oklch(0.99 0.005 240) 0%, oklch(0.95 0.02 240) 100%);
+  --gradient-shine: linear-gradient(120deg, transparent 0%, color-mix(in oklab, white 40%, transparent) 50%, transparent 100%);
 }
+
 
 :root {
   --radius: 0.5rem;
@@ -64,9 +72,29 @@
   --input: oklch(0.92 0.015 240);
   --ring: oklch(0.30 0.06 250);
   --navy: oklch(0.30 0.06 250);
+  --navy-deep: oklch(0.20 0.05 250);
   --navy-soft: oklch(0.55 0.08 245);
+  --steel: oklch(0.72 0.04 240);
   --gold: oklch(0.72 0.12 75);
 }
+
+@utility bg-metal {
+  background-image: var(--gradient-metal);
+}
+@utility bg-metal-soft {
+  background-image: var(--gradient-metal-soft);
+}
+@utility text-metal {
+  background-image: var(--gradient-metal);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility hairline {
+  background-image: linear-gradient(90deg, transparent, color-mix(in oklab, var(--navy-soft) 50%, transparent), transparent);
+  height: 1px;
+}
+
 
 @layer base {
   * {
