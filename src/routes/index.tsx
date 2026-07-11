@@ -1,10 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "@/assets/logo.png.asset.json";
+import logo from "@/assets/logo.png";
 import heroOffice from "@/assets/hero-office.jpg";
 import scaleImg from "@/assets/scale.jpg";
-import luanImg from "@/assets/luan.jpg.asset.json";
-import greicyImg from "@/assets/greicy.jpg.asset.json";
+import luanImg from "@/assets/luan.jpg";
+import greicyImg from "@/assets/greicy.jpg";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -67,7 +67,7 @@ function Landing() {
       <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <a href="#top" className="flex items-center gap-3">
-            <img src={logo.url} alt="Castro & Henrich Advocacia" className="h-11 w-auto" />
+            <img src={logo} alt="Castro & Henrich Advocacia" className="h-11 w-auto" />
           </a>
           <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
             <a href="#areas" className="transition hover:text-primary">Áreas</a>
@@ -154,14 +154,14 @@ function Landing() {
                 style={{ backgroundImage: "var(--gradient-shine)", mixBlendMode: "overlay" }}
               />
               <img
-                src={logo.url}
+                src={logo}
                 alt=""
                 aria-hidden
                 className="pointer-events-none absolute -right-10 -top-10 h-56 w-56 object-contain opacity-[0.06]"
               />
               <div className="relative">
                 <div className="mb-5 flex items-center gap-3">
-                  <img src={logo.url} alt="" className="h-10 w-auto" />
+                  <img src={logo} alt="" className="h-10 w-auto" />
                   <div className="h-8 w-px bg-border" />
                   <p className="text-xs uppercase tracking-widest text-navy-soft">
                     Advogados<br />Associados
@@ -201,7 +201,7 @@ function Landing() {
         />
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 py-16 text-center text-primary-foreground md:py-20">
           <img
-            src={logo.url}
+            src={logo}
             alt="Castro & Henrich Advocacia"
             className="h-20 w-auto brightness-0 invert md:h-24"
           />
@@ -377,7 +377,7 @@ function Landing() {
             <article className="group relative overflow-hidden rounded-2xl bg-primary-foreground/5 ring-1 ring-primary-foreground/10 shadow-elegant">
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
-                  src={luanImg.url}
+                  src={luanImg}
                   alt="Luan Castro, advogado sócio"
                   className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
@@ -410,7 +410,7 @@ function Landing() {
             <article className="group relative overflow-hidden rounded-2xl bg-primary-foreground/5 ring-1 ring-primary-foreground/10 shadow-elegant">
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
-                  src={greicyImg.url}
+                  src={greicyImg}
                   alt="Greicy Maura Henrich, advogada sócia"
                   className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
                   loading="lazy"
@@ -531,7 +531,7 @@ function Landing() {
               }}
             />
             <img
-              src={logo.url}
+              src={logo}
               alt=""
               aria-hidden
               className="pointer-events-none absolute -right-16 -bottom-16 h-64 w-64 object-contain opacity-[0.05]"
@@ -597,7 +597,7 @@ function Landing() {
         <div className="absolute inset-0 -z-10 bg-metal" />
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 md:grid-cols-3">
           <div>
-            <img src={logo.url} alt="Castro & Henrich" className="h-12 w-auto brightness-0 invert" />
+            <img src={logo} alt="Castro & Henrich" className="h-12 w-auto brightness-0 invert" />
             <p className="mt-4 text-sm text-primary-foreground/70">
               Advogados Associados · Direito de Família e Sucessões.
             </p>
