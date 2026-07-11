@@ -25,20 +25,10 @@ function Landing() {
   const [area, setArea] = useState("");
   const [mensagem, setMensagem] = useState("");
 
-  const openWhats = (texto: string) => {
-    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
-    const win = window.open(url, "_blank", "noopener,noreferrer");
-    // Fallback caso o popup seja bloqueado (ex.: preview em iframe)
-    if (!win) {
-      const a = document.createElement("a");
-      a.href = url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-    }
-  };
+const openWhats = (texto: string) => {
+  const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+};
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
