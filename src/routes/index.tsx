@@ -215,7 +215,7 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AreaCard
               tag="Mais rápido"
               title="Divórcio Extrajudicial"
@@ -226,8 +226,13 @@ function Landing() {
               desc="Necessário em casos com litígio, filhos menores ou incapazes. Conduzimos com estratégia e sensibilidade."
             />
             <AreaCard
-              title="Inventário"
-              desc="Extrajudicial em cartório ou judicial quando exigido. Cuidamos de partilha, ITCMD e documentação."
+              tag="Mais rápido"
+              title="Inventário Extrajudicial"
+              desc="Realizado em cartório quando há consenso entre os herdeiros e não há testamento ou menores envolvidos."
+            />
+            <AreaCard
+              title="Inventário Judicial"
+              desc="Necessário em casos com litígio, herdeiros menores ou testamento. Cuidamos de partilha, ITCMD e documentação."
             />
             <AreaCard
               title="Testamento"
