@@ -25,6 +25,21 @@ function Landing() {
   const [area, setArea] = useState("");
   const [mensagem, setMensagem] = useState("");
 
+  const openWhats = (texto: string) => {
+    const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`;
+    const win = window.open(url, "_blank", "noopener,noreferrer");
+    // Fallback caso o popup seja bloqueado (ex.: preview em iframe)
+    if (!win) {
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const areaLabel = AREAS.find((a) => a.value === area)?.label ?? "Não informado";
@@ -33,14 +48,11 @@ function Landing() {
       `Gostaria de uma orientação sobre: ${areaLabel}.`,
       mensagem ? `\n${mensagem}` : "",
     ].join("\n");
-    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`, "_blank");
+    openWhats(texto);
   };
 
   const directWhats = () =>
-    window.open(
-      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent("Olá! Gostaria de conversar com o escritório.")}`,
-      "_blank",
-    );
+    openWhats("Olá! Gostaria de conversar com o escritório.");
 
   return (
     <div className="min-h-screen bg-background text-foreground">
