@@ -334,16 +334,8 @@ function Landing() {
         </div>
       </section>
 
-      {/* EQUIPE — Luan */}
+      {/* EQUIPE */}
       <section id="equipe" className="relative overflow-hidden border-b border-border bg-primary text-primary-foreground">
-        <img
-          src={luanImg.url}
-          alt=""
-          aria-hidden
-          className="absolute inset-y-0 right-0 -z-10 h-full w-full object-cover object-[70%_center] opacity-40 md:w-3/5"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary via-primary/95 to-primary/20" />
         <div
           aria-hidden
           className="absolute inset-0 -z-10 opacity-[0.08]"
@@ -353,61 +345,83 @@ function Landing() {
             backgroundSize: "64px 64px",
           }}
         />
-
         <div className="mx-auto max-w-6xl px-6 py-20 md:py-28">
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Sócio-fundador</p>
-          <h2 className="mt-3 max-w-xl font-serif text-4xl leading-tight md:text-5xl">Luan Castro</h2>
-          <p className="mt-2 text-sm font-medium uppercase tracking-widest text-primary-foreground/70">
-            OAB/RS 124.511
-          </p>
-          <p className="mt-6 max-w-xl text-primary-foreground/85 md:text-lg">
-            Advogado com atuação centrada em soluções extrajudiciais e em processos de família
-            complexos. Conduz cada caso com estratégia jurídica sólida, discrição e proximidade com
-            o cliente.
-          </p>
-          <ul className="mt-8 grid max-w-xl gap-2 text-sm text-primary-foreground/85">
-            <BulletLight>Direito de família e sucessões</BulletLight>
-            <BulletLight>Divórcios consensuais e litigiosos</BulletLight>
-            <BulletLight>Negociação e mediação de conflitos familiares</BulletLight>
-          </ul>
-        </div>
-      </section>
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Nossa equipe</p>
+            <h2 className="mt-3 font-serif text-4xl leading-tight md:text-5xl">Advogados sócios</h2>
+            <p className="mt-4 text-primary-foreground/80 md:text-lg">
+              Atendimento conduzido diretamente pelos sócios do escritório, com estratégia,
+              discrição e proximidade em cada caso.
+            </p>
+          </div>
 
-      {/* EQUIPE — Greicy */}
-      <section className="relative overflow-hidden border-b border-border bg-background">
-        <img
-          src={greicyImg.url}
-          alt=""
-          aria-hidden
-          className="absolute inset-y-0 left-0 -z-10 h-full w-full object-cover object-[30%_center] opacity-25 md:w-3/5"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-l from-background via-background/95 to-background/30" />
-        <div
-          aria-hidden
-          className="absolute inset-y-0 left-0 -z-10 w-1/2 opacity-40"
-          style={{
-            background:
-              "radial-gradient(circle at 20% 50%, color-mix(in oklab, var(--navy-soft) 25%, transparent), transparent 60%)",
-          }}
-        />
+          <div className="mt-14 grid gap-10 md:grid-cols-2">
+            {/* LUAN */}
+            <article className="group relative overflow-hidden rounded-2xl bg-primary-foreground/5 ring-1 ring-primary-foreground/10 shadow-elegant">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <img
+                  src={luanImg.url}
+                  alt="Luan Castro, advogado sócio"
+                  className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary-foreground/70">
+                    Sócio-fundador
+                  </p>
+                  <h3 className="mt-1 font-serif text-2xl md:text-3xl">Luan Castro</h3>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-widest text-primary-foreground/80">
+                    OAB/RS 124.511
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-4 p-6 md:p-8">
+                <p className="text-sm text-primary-foreground/85 md:text-base">
+                  Atuação centrada em soluções extrajudiciais e em processos de família complexos.
+                  Conduz cada caso com estratégia jurídica sólida, discrição e proximidade com o cliente.
+                </p>
+                <ul className="grid gap-2 text-sm text-primary-foreground/85">
+                  <BulletLight>Direito de família e sucessões</BulletLight>
+                  <BulletLight>Divórcios consensuais e litigiosos</BulletLight>
+                  <BulletLight>Negociação e mediação de conflitos</BulletLight>
+                </ul>
+              </div>
+            </article>
 
-        <div className="mx-auto flex max-w-6xl flex-col items-end px-6 py-20 text-right md:py-28">
-          <p className="text-xs font-semibold uppercase tracking-widest text-navy-soft">Sócia-fundadora</p>
-          <h2 className="mt-3 max-w-xl font-serif text-4xl leading-tight md:text-5xl">Greicy Maura Henrich</h2>
-          <p className="mt-2 text-sm font-medium uppercase tracking-widest text-primary">
-            OAB/RS 124.784
-          </p>
-          <p className="mt-6 max-w-xl text-muted-foreground md:text-lg">
-            Especialista em direito sucessório, inventários e planejamento patrimonial. Combina
-            técnica jurídica apurada com um atendimento humano e cuidadoso em momentos delicados
-            para a família.
-          </p>
-          <ul className="mt-8 grid max-w-xl gap-2 text-sm text-muted-foreground">
-            <BulletDark>Inventários extrajudiciais e judiciais</BulletDark>
-            <BulletDark>Testamentos e planejamento sucessório</BulletDark>
-            <BulletDark>Partilha de bens e ITCMD</BulletDark>
-          </ul>
+            {/* GREICY */}
+            <article className="group relative overflow-hidden rounded-2xl bg-primary-foreground/5 ring-1 ring-primary-foreground/10 shadow-elegant">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <img
+                  src={greicyImg.url}
+                  alt="Greicy Maura Henrich, advogada sócia"
+                  className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary via-primary/60 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6">
+                  <p className="text-[11px] font-semibold uppercase tracking-widest text-primary-foreground/70">
+                    Sócia-fundadora
+                  </p>
+                  <h3 className="mt-1 font-serif text-2xl md:text-3xl">Greicy Maura Henrich</h3>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-widest text-primary-foreground/80">
+                    OAB/RS 124.784
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-4 p-6 md:p-8">
+                <p className="text-sm text-primary-foreground/85 md:text-base">
+                  Especialista em direito sucessório, inventários e planejamento patrimonial.
+                  Combina técnica jurídica apurada com atendimento humano e cuidadoso em momentos delicados.
+                </p>
+                <ul className="grid gap-2 text-sm text-primary-foreground/85">
+                  <BulletLight>Inventários extrajudiciais e judiciais</BulletLight>
+                  <BulletLight>Testamentos e planejamento sucessório</BulletLight>
+                  <BulletLight>Partilha de bens e ITCMD</BulletLight>
+                </ul>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
