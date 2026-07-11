@@ -215,7 +215,7 @@ function Landing() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <AreaCard
               tag="Mais rápido"
               title="Divórcio Extrajudicial"
@@ -226,8 +226,13 @@ function Landing() {
               desc="Necessário em casos com litígio, filhos menores ou incapazes. Conduzimos com estratégia e sensibilidade."
             />
             <AreaCard
-              title="Inventário"
-              desc="Extrajudicial em cartório ou judicial quando exigido. Cuidamos de partilha, ITCMD e documentação."
+              tag="Mais rápido"
+              title="Inventário Extrajudicial"
+              desc="Realizado em cartório quando há consenso entre os herdeiros e não há testamento ou menores envolvidos."
+            />
+            <AreaCard
+              title="Inventário Judicial"
+              desc="Necessário em casos com litígio, herdeiros menores ou testamento. Cuidamos de partilha, ITCMD e documentação."
             />
             <AreaCard
               title="Testamento"
@@ -658,21 +663,21 @@ function BulletDark({ children }: { children: React.ReactNode }) {
 
 function AreaCard({ title, desc, tag }: { title: string; desc: string; tag?: string }) {
   return (
-    <div className="group relative overflow-hidden rounded-xl border border-border bg-white/90 p-6 shadow-soft backdrop-blur transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant">
+    <div className="group relative rounded-2xl border border-border bg-white/90 p-8 md:p-9 shadow-soft backdrop-blur transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-elegant min-h-[220px]">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-0 transition group-hover:opacity-100"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px overflow-hidden rounded-t-2xl opacity-0 transition group-hover:opacity-100"
         style={{
           background:
             "linear-gradient(90deg, transparent, color-mix(in oklab, var(--navy-soft) 60%, transparent), transparent)",
         }}
       />
       {tag && (
-        <span className="absolute -top-2 right-4 rounded-full bg-metal px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground shadow-soft">
+        <span className="absolute -top-3 right-5 z-10 rounded-full bg-metal px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground shadow-soft ring-1 ring-white/20">
           {tag}
         </span>
       )}
-      <h3 className="font-serif text-lg text-foreground">{title}</h3>
+      <h3 className="font-serif text-xl text-foreground">{title}</h3>
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
     </div>
   );
